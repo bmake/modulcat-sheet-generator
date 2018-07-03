@@ -1,0 +1,256 @@
+---
+layout: default
+rdf_prefix_path: _data/prefixes.pref
+---
+{% assign courseInstance = page.rdf | rdf_property: 'schema:hasCourseInstance' %}
+{% assign educationalAlignment = page.rdf | rdf_property: 'schema:educationalAlignment' %}
+
+
+<a href="/module">Zurück</a>
+
+
+<table class="table">
+
+  <tr>
+    <th>Modul-Kurzkennzeichen</th>
+    <td>{{ page.rdf | rdf_property: 'schema:courseCode' }}</td>
+  </tr>
+
+  <tr>
+    <th>Modulbezeichnung</th>
+    <td>{{ page.rdf | rdf_property: 'schema:name' }}</td>
+  </tr> 
+
+  <tr>
+    <th>Aufteilung in Lehrveranstaltungen:</th>
+    
+    <td>
+      <ul>
+        {% assign resultset = page.rdf | rdf_property: 'schema:learningResourceType', nil, true %}
+        {% for result in resultset %}
+        <li>{{ result }}</li>
+        {% endfor %}
+      </ul>
+  </tr> 
+
+  <tr>
+    <th>Dauer des Moduls:</th>
+    <td>{{ courseInstance | rdf_property: 'schema:duration' }}</td>
+  </tr>
+
+  <tr>
+    <th>Zuordnung zum Curriculum:</th>
+    <td>
+
+      {% assign query = 'SELECT DISTINCT ?ao WHERE { ?resourceUri schema:educationalAlignment ?ao . ?ao schema:alignmentType "Zuordnung zum Curriculum" . } ' %}
+      {% assign resultset = page.rdf | sparql_query: query %}
+        {% for result in resultset %}
+        {{ result.ao | rdf_property: 'schema:targetName'  }}
+      {% endfor %}
+
+    </td>
+  </tr>
+
+  <tr>
+    <th>Verwendbarkeit des Moduls:</th>
+    <td>{{ page.rdf | rdf_property: 'schema:educationalUse' }}</td>
+  </tr>
+
+  <tr>
+    <th>Häufigkeit des Angebots von Modulen:</th>
+    <td>{{ courseInstance | rdf_property: 'schema:courseMode' }}</td>
+  </tr>
+
+  <tr>
+    <th>Autor/in:</th>
+    <td>
+      
+       <ul>
+        {% assign resultset = page.rdf | rdf_property: 'schema:accountablePerson', nil, true %}
+        {% for result in resultset %}
+        <li>{{ result | rdf_property: 'schema:familyName' }}</li>
+        {% endfor %}
+      </ul>
+
+    </td>
+  </tr>
+
+  <tr>
+    <th>Dozent/in:</th>
+    <td>
+            
+       <ul>
+        {% assign resultset = courseInstance | rdf_property: 'schema:instructor', nil, true %}
+        {% for result in resultset %}
+        <li>{{ result | rdf_property: 'schema:familyName' }}</li>
+        {% endfor %}
+      </ul>
+
+
+    </td>
+  </tr>
+
+
+  <tr>
+    <th>Lehrsprache:</th>
+    <td>
+      
+      <ul>
+        {% assign resultset = page.rdf | rdf_property: 'schema:inLanguage', nil, true %}
+        {% for result in resultset %}
+        <li>{{ result }}</li>
+        {% endfor %}
+      </ul>
+
+    </td>
+  </tr>
+
+  <tr>
+    <th>Vorraussetzungen:</th>
+    <td>
+      
+      <ul>
+        {% assign resultset = page.rdf | rdf_property: 'schema:coursePrerequisites', nil, true %}
+        {% for result in resultset %}
+        <li>{{ result }}</li>
+        {% endfor %}
+      </ul>
+
+    </td>
+  </tr>
+
+  <tr>
+    <th>Vorraussetzungen:</th>
+    <td>
+      
+
+      <ul>
+        {% assign resultset = page.rdf | rdf_property: 'schema:isBasedOn', nil, true %}
+        {% for result in resultset %}
+        <li>{{ result | rdf_property: 'schema:name' }}</li>
+        {% endfor %}
+      </ul>
+
+    </td>
+  </tr>
+
+  <tr>
+    <th>ECTS-Credits:</th>
+    <td>{{ page.rdf | rdf_property: 'schema:educationalCredentialAwarded' }}</td>
+  </tr>
+
+  <tr>
+    <th>Gesamtworkload und ihre Zusammensetzung:</th>
+    <td>
+      
+      {% assign query = 'SELECT DISTINCT ?cwName ?cwTime WHERE { ?resourceUri schema:hasPart ?CWseries . ?CWseries schema:hasPart ?cw . ?CWseries schema:name "Zusammensetzung der Workload" . ?cw schema:name ?cwName . ?cw schema:timeRequired ?cwTime } ORDER BY ?elem' %}
+      {% assign resultset = page.rdf | sparql_query: query %}
+        {% for result in resultset %}
+        <li>{{ result.cwName  }} ({{ result.cwTime }})</li>
+      {% endfor %}
+
+    </td>
+  </tr>
+
+  <tr>
+    <th>Lehrform/SWS:</th>
+    <td>
+      
+
+      {% assign query = 'SELECT DISTINCT ?cwName ?cwTime WHERE { ?resourceUri schema:hasPart ?CWseries . ?CWseries schema:hasPart ?cw . ?CWseries schema:name "Lehrformen" . ?cw schema:name ?cwName . ?cw schema:timeRequired ?cwTime } ORDER BY ?elem' %}
+      {% assign resultset = page.rdf | sparql_query: query %}
+        {% for result in resultset %}
+        <li>{{ result.cwName  }} ({{ result.cwTime }})</li>
+      {% endfor %}
+
+    </td>
+  </tr>
+
+  <tr>
+    <th>Studien-/ Prüfungsleistungen:</th>
+    <td>
+      
+      {% assign query = 'SELECT ?elem WHERE { ?resourceUri schema:about ?r . ?r schema:identifier "Exam" . ?r schema:itemListElement ?elem }' %}
+      {% assign resultset = page.rdf | sparql_query: query %}
+        {% for result in resultset %}
+        <li>{{ result.elem }}</li>
+      {% endfor %}
+
+    </td>
+  </tr>
+
+ <tr>
+    <th>Gewichtung in der Gesamtnote:</th>
+    <td>
+      {% assign query = 'SELECT DISTINCT ?ao WHERE { ?resourceUri schema:educationalAlignment ?ao . ?ao schema:alignmentType "Gewichtung der Note" . } ' %}
+      {% assign resultset = page.rdf | sparql_query: query %}
+        {% for result in resultset %}
+        {{ result.ao | rdf_property: 'schema:targetName'  }}
+      {% endfor %}
+
+    </td>
+  </tr>
+
+  <tr>
+    <th>Lernergebnisse:</th>
+    <td>
+      {% assign query = 'SELECT ?elem WHERE { ?resourceUri schema:about ?r . ?r schema:identifier "Results" . ?r schema:itemListElement ?elem }' %}
+      {% assign resultset = page.rdf | sparql_query: query %}
+        {% for result in resultset %}
+        <li>{{ result.elem }}</li>
+      {% endfor %}
+
+
+    </td>
+  </tr>
+
+
+ <tr>
+    <th>Inhalte:</th>
+    <td>
+      {% assign query = 'SELECT ?elem WHERE { ?resourceUri schema:about ?r . ?r schema:identifier "Content" . ?r schema:itemListElement ?elem } ORDER BY ?elem' %}
+      {% assign resultset = page.rdf | sparql_query: query %}
+        {% for result in resultset %}
+        {{ result.elem }}<br />
+      {% endfor %}
+
+
+    </td>
+  </tr>
+
+  <tr>
+    <th>Lehr- und Lernmethoden:</th>
+    <td>
+      
+
+      <ul>
+        {% assign resultset = page.rdf | rdf_property: 'schema:interactivityType' %}
+        {% for result in resultset %}
+          <li>{{ result  }}</li>
+        {% endfor %}
+      </ul>
+
+
+    </td>
+  </tr>
+
+  <tr>
+    <th>Literatur:</th>
+    <td>
+      
+      {% assign query = 'SELECT DISTINCT ?citation WHERE { ?resourceUri schema:citation ?citation } ORDER BY ?elem' %}
+      {% assign resultset = page.rdf | sparql_query: query %}
+        {% for result in resultset %}
+        <li>{{ result.citation | rdf_property: 'rdfs:label' }} - {{ result.citation | rdf_property: 'schema:headline' }}</li>
+      {% endfor %}
+
+
+    </td>
+  </tr>
+
+  <tr>
+    <th>Besonderes:</th>
+    <td>{{ page.rdf | rdf_property: 'schema:comment' }}</td>
+  </tr>
+
+</table>

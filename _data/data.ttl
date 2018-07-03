@@ -1,0 +1,1070 @@
+@prefix schema: <https://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix module: <https://bmake.th-brandenburg.de/module/> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix thb-fbwm: <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/> .
+@prefix xing: <https://www.xing.com/profile/> .
+@prefix linkedIn: <https://www.linkedin.com/in/> .
+@prefix resGate: <https://www.researchgate.net/profile/> .
+
+
+
+module:index a <http://example.org/indexSite> .
+
+
+### Module WIB_GPMO
+## main Template
+module:WIB_GPMO a schema:Course ;
+	rdfs:label "Grundlagen Prozessmodellierung" ;
+	schema:name "Grundlagen der Prozessmodellierung"@de , "Basics of Business Process Modeling"@en  ;
+	schema:datePublished "2018-06-01" ;
+	schema:courseCode "GPMO" ;
+	schema:url "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/grundlagen-der-prozessmodellierung/" ;
+	schema:learningResourceType "- Vorlesung", "- Übung", "- Projekt" ;
+	schema:accountablePerson thb-fbwm:vera-meister ;
+	schema:comment "Praxisprojekt im Hochschul- oder Unternehmensumfeld" ;
+	schema:inLanguage "de" , "en" ;
+	schema:interactivityType "- Seminaristische Vorlesungen" , "- Praktische Übungen und Konsultationen", "- MC Selbsttests" , "- Werkzeugtutorials und -präsentationen", "- Projektarbeit in Gruppen und Kleingruppen", "- Studentische Präsentationen", "- Video-Vorlesungen" ;
+	schema:educationalUse "Dient der Vorbereitung darauf aufbauender Veranstaltungen, insbesondere bzgl. Operationalisiserung von Prozessen." ;
+	schema:citation <http://doi.org/10.1007/978-3-8348-2428-8> , <https://www.isbn-international.org/978-3-446-45054-7> , <https://www.isbn-international.org/978-3738626711> , <https://www.isbn-international.org/978-0982368114> ,
+					<https://www.omg.org/spec/BPMN/2.0.2/PDF> ;		
+	schema:hasPart module:Lehrformen_GPMO , module:ZusWorkload_GPMO ;
+	schema:timeRequired "PT150H" ;
+	schema:coursePrerequisites  "Grundkenntnisse der Systemanalyse" ; 
+	schema:isBasedOn module:WIB_SYSA ;
+	schema:about module:LResults_GPMO , module:Content_GPMO , module:Exam_GPMO ;
+	schema:educationalCredentialAwarded "5" ;	
+	schema:hasCourseInstance module:So18_GPMO ;
+	schema:educationalAlignment module:Curr_WIB_GPMO , module:ModuleType_WIB_GPMO , module:SWS_WIB_GPMO, module:Note_WIB_GPMO .
+			
+## for accountable Persons, instructors & authors (identification via ORCID or Web-Site)
+thb-fbwm:vera-meister a schema:Lecturer ;
+			rdfs:label "Prof. Dr. Vera G. Meister" ;
+			schema:sameAs "http://orcid.org/0000-0002-2780-0222" ;
+			schema:givenName "Vera G." ;
+			schema:familyName "Meister" ;
+			schema:honorificPrefix "Prof. Dr. rer. nat." ;
+			schema:honorificSuffix "" ;
+			schema:email "vera.meister@th-brandenburg.de" ;
+			schema:affiliation wd:Q1391182 .
+
+thb-fbwm:dietmar-wikarski a schema:Lecturer ;
+			rdfs:label "Prof. Dr. Dietmar Wikarski" ;
+			schema:sameAs "https://www.researchgate.net/profile/Dietmar_Wikarski" ;
+			schema:givenName "Dietmar" ;
+			schema:familyName "Wikarski" ;
+			schema:honorificPrefix "Prof. Dr. rer. nat." ;
+			schema:honorificSuffix "" ;
+			schema:email "dietmar.wikarski@th-brandenburg.de" ;
+			schema:affiliation wd:Q1391182 .
+
+resGate:Andreas_Gadatsch a schema:Author ;
+			rdfs:label "Andreas Gadatsch" ;
+			schema:givenName "Andreas" ;
+			schema:familyName "Gadatsch" ;
+			schema:honorificPrefix "Prof. Dr." .
+			
+xing:Jakob_Freund  a schema:Author ;
+			rdfs:label "Jakob Freund" ;
+			schema:givenName "Jakob" ;
+			schema:familyName "Freund" .
+			
+xing:Bernd_Ruecker2  a schema:Author ;
+			rdfs:label "Bernd Rücker" ;
+			schema:givenName "Bernd" ;
+			schema:familyName "Rücker" .
+			
+xing:Thomas_Allweyer  a schema:Author ;
+			rdfs:label "Thomas Allweyer" ;
+			schema:givenName "Thomas" ;
+			schema:familyName "Allweyer" ;
+			schema:honorificPrefix "Prof. Dr." .
+
+linkedIn:bruce-silver-6a3859  a schema:Author ;
+			rdfs:label "Bruce Silver" ;
+			schema:givenName "Bruce" ;
+			schema:familyName "Silver" .
+			
+## for affiliations of persons (identification via WikiData)
+wd:Q1391182 a schema:Organization ;
+			rdfs:label "TH Brandenburg" ;
+			schema:legalName "Technische Hochschule Brandenburg" ;
+			schema:url "https://www.th-brandenburg.de/" .
+			
+## for citations: Books, Articles (resp. CWS) & Digital Documents (identification via DOI, ISBN or URL)		
+<http://doi.org/10.1007/978-3-8348-2428-8> a schema:Book ;
+			rdfs:label "Gadatsch: GPM" ;
+			schema:author resGate:Andreas_Gadatsch ;
+			schema:headline "Grundkurs Geschäftsprozess-Management – Methoden und Werkzeuge für die IT-Praxis." ;
+			schema:bookEdition "7. Auflage" ;
+			schema:datePublished "2012" . 
+
+<https://www.isbn-international.org/978-3-446-45054-7> a schema:Book ;
+			rdfs:label "Freund/Rücker: BPMN 2" ;
+			schema:author xing:Jakob_Freund , xing:Bernd_Ruecker2 ;
+			schema:headline "Praxishandbuch BPMN – Mit einer Einführung in CMMN und DMN." ;
+			schema:bookEdition "5. Auflage" ;
+			schema:datePublished "2017" . 
+			
+<https://www.isbn-international.org/978-3738626711> a schema:Book ;
+			rdfs:label "Allweyer: BPMN 2" ;
+			schema:author xing:Thomas_Allweyer ;
+			schema:headline "BPMN 2.0 Business Process Model and Notation – Einführung in den Standard der Geschäftsprozessmodellierung." ;
+			schema:bookEdition "3. Auflage" ;
+			schema:datePublished "2015" . 
+
+<https://www.isbn-international.org/978-0982368114> a schema:Book ;
+			rdfs:label "Silver: BPMN - Method & Style" ;		
+			schema:author linkedIn:bruce-silver-6a3859 ;
+			schema:headline "BPMN Method & Style – With BPMN Implementor’s Guide." ;
+			schema:bookEdition "2nd edition" ;
+			schema:datePublished "2011" . 
+
+<https://www.omg.org/spec/BPMN/2.0.2/PDF> a schema:DigitalDocument ; 			
+			rdfs:label "Silver: BPMN - Method & Style" ;
+			schema:publisher wd:Q252733 ;
+			schema:headline "Business Process Model And Notation (BPMN), V. 2.0.2" ;
+			schema:datePublished "2013-12-09" ;
+			schema:url "https://www.omg.org/spec/BPMN/2.0.2/PDF" .
+			
+## for publishers of Books, Articles, Journals & Digital Documents
+wd:Q252733 a schema:Organization ;
+			rdfs:label "OMG" ;
+			schema:legalName "Object Management Group" ;
+			schema:url "https://www.omg.org/" .
+			
+## for didactic parts of a course (hasPart): Lehrformen & Zusammensetzung Workload
+module:Lehrformen_GPMO a schema:CreativeWorkSeries ;
+			schema:name "Lehrformen" ;
+			schema:hasPart module:LF1_GPMO , module:LF2_GPMO .
+
+module:LF1_GPMO a schema:CreativeWork ;
+			schema:name "Vorlesung" ;
+			schema:timeRequired "PT30H" .
+			
+module:LF2_GPMO a schema:CreativeWork ;
+			schema:name "Übung" ;
+			schema:timeRequired "PT30H" .
+			
+module:ZusWorkload_GPMO a schema:CreativeWorkSeries ;
+			schema:name "Zusammensetzung der Workload" ;
+			schema:hasPart module:WL1_GPMO , module:WL2_GPMO , module:WL3_GPMO , module:WL4_GPMO , module:WL5_GPMO .
+			
+module:WL1_GPMO a schema:CreativeWork ;
+			schema:name "Präsenzvorlesungen" ;
+			schema:timeRequired "PT30H" .
+			
+module:WL2_GPMO a schema:CreativeWork ;
+			schema:name "Präsenzübungen" ;
+			schema:timeRequired "PT30H" .
+			
+module:WL3_GPMO a schema:CreativeWork ;
+			schema:name "betreute Projektarbeit" ;
+			schema:timeRequired "PT15H" .
+			
+module:WL4_GPMO a schema:CreativeWork ;
+			schema:name "Selbststudium und Prüfungsvorbereitung" ;
+			schema:timeRequired "PT45H" .
+			
+module:WL5_GPMO a schema:CreativeWork ;
+			schema:name "selbständige Projektarbeit" ;
+			schema:timeRequired "PT45H" .
+			
+## for ItemLists (about): Learning Results, Content, Examination Forms
+module:LResults_GPMO a schema:ItemList ;
+			schema:identifier "Results" ;
+			schema:name "Lernergebnisse GPMO" ;
+			schema:itemListElement "- Die Studierenden verstehen die Anforderungen und Problemfelder im Management von Geschäfts- und Kooperationsprozessen." , 
+			"- Sie verfügen über Grundkompetenzen der Analyse und Modellierung von Geschäfts- und Kooperationsprozessen im Praxisfeld." ,
+			"- Die Studierenden beherrschen die Grundlagen der von der OMG spezifizierten Standard-Notation zur Modellierung von Geschäftsprozessen BPMN 2.0." , 
+			"- Sie sammeln Erfahrungen in der Planung und Durchführung von Projekten zur Prozessmodellierung nach KSA und BPMN 2.0." , 
+			"- Sie können Software-Werkzeuge zum Prozessmanagement in praktischen Fragestellungen bzw. Projekten gezielt und systematisch einsetzen." .
+			
+module:Content_GPMO a schema:ItemList ;
+			schema:identifier "Content" ;
+			schema:name "Inhalt GPMO" ;
+			schema:itemListElement "1) Einführung in die Prozessmodellierung: Sichten auf Prozesse, Modellierungsanlässe, Modellierungsgegenstände, proprietäre Notationen, Standardnotationen, Modellierungswerkzeuge" , 
+			"2) Einführung in BPMN 2.0: BPMN-Elemente – Flussobjekte, Teilnehmer, Daten, verbindende Elemente, Artefakte; einfache Prozessmodelle: lineare Abläufe, verzweigte Abläufe, Standardflüsse und implizite Gateways" , 
+			"3) Methode und Stil von BPMN nach Bruce Silver: Mehrschrittmethode – Prozessrahmen definieren, Happy Path entwerfen, Ausnahmepfade ergänzen, Teilprozesse expandieren, Nachrichtenflüsse zu externen Teilnehmern ergänzen, Datenobjekte ergänzen; Style-Prinzipien und grundlegende Anwendungsregeln für BPMN 2.0" , 
+			"4) Spezifikation von BPMN-Flussobjekte: technischer Spezifikationsrahmen BPMN-XML, Spezifikation von Triggern für Catching-Ereignisse, Spezifikation von Prozesszuständen für Throwing-Ereignisse, Spezifikation von Aufgaben und Aktivitäten im Hinblick auf Art und Häufigkeit der Ausführung, spezielle Typen von Gateways – ereignisbasiertes XOR-Gateway, inclusive OR Gateway, komplexes Gateway" , 
+			"5) Ausnahmebehandlung in BPMN 2.0: Angehängte Zwischenereignisse, Ereignis-Teilprozesse, Kategorien von Ausnahmen in Geschäftsprozessen, Throw-Catch-Pattern für Fehlerereignisse, Eskalationsereignisse, Nachrichten- und Signalereignisse, Pattern der Weiterleitung von Ausnahmen" , 
+			"6) Weiterführende Themen: Schleifen und Mehrfachinstanziierung, Transaktionen und Kompensationen, Typen von BPMN Prozessdiagrammen, Gegenüberstellung von deskriptiver und analytischer Modellierung, Ausblick technische Modellierung" , 
+			"7) Erhebung, Analyse und Modellierung realer Geschäftsprozesse nach KSA und BPMN 2.0: Kommunikation mit Stakeholdern, Erhebung von Anforderungen, fachliche und technische Analyse von Prozessen, Modellierung von Ist- und Sollprozessen, Implementierung der Prozessmodelle in eine Plattform, Dokumentation von Prozessinformationen, Präsentation der Ergebnisse vor Stakeholdern" .
+
+module:Exam_GPMO a schema:ItemList ;
+			schema:identifier "Exam" ;
+			schema:name "Studien-/Prüfungsleistungen GPMO" ;
+			schema:itemListElement "- Semesterbegleitende Teilleistungen" , "- Projekt" , "- Abschlussklausur" .
+			
+## for CourseInstances
+module:So18_GPMO a schema:CourseInstance ;
+			schema:courseMode "jedes Sommersemester" ;
+			schema:duration "P0.5Y" ;
+			schema:identifier "GPMO SoSe18" ;
+			schema:instructor thb-fbwm:vera-meister , thb-fbwm:dietmar-wikarski .
+			
+## for AlignmentObjects 
+module:Curr_WIB_GPMO a schema:AlignmentObject ;
+			schema:alignmentType "Zuordnung zum Curriculum" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "WI Ba, 2. Semester" ;
+			schema:targetDescription "Wirtschaftsinformatik Bachelor, 2. Semester (Vollzeitmodus)" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:ModuleType_WIB_GPMO a schema:AlignmentObject ;
+			schema:alignmentType "Modultyp" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "Pflichtmodul" ;
+			schema:targetDescription "muss von allen Studierenden belegt und absolviert werden" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:SWS_WIB_GPMO a schema:AlignmentObject ;
+			schema:alignmentType "SWS" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "4 SWS" ;
+			schema:targetDescription "Umfang des Moduls in Semesterwochenstunden" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:Note_WIB_GPMO a schema:AlignmentObject ;
+			schema:alignmentType "Gewichtung der Note" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, § 13" ;
+			schema:targetName "1/3 der Fachnote, 3,33 % des Mittelwerts aller Modulnoten, 2,67 % der Abschlussnote" ;
+			schema:targetDescription "Gewichtungsanteile der Note im Hinblick auf die spezifische Fachnote (1/3), den Mittelwert aller Fachnoten (3,33 %) sowie die Abschlussnote (2,67 %)" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+
+
+
+### Module WIB_SYSA
+## main Template
+module:WIB_SYSA a schema:Course ;
+	rdfs:label "Systemanalyse" ;
+	schema:name "Systemanalyse"@de , "Systems Analysis"@en ;
+	schema:datePublished "2018-06-01" ;
+	schema:courseCode "CourseCode" ;
+	schema:url "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/systemanalyse/" ;
+	schema:learningResourceType "- Vorlesung" , "- Übung" ;
+	schema:accountablePerson thb-fbwm:dietmar-wikarski ;
+	schema:comment "Gruppenarbeiten werden unterstützt durch eine kollaborative Dateiaustausch-Plattform (BSCW)." ;
+	schema:inLanguage "de" , "en" ;
+	schema:interactivityType "- Vorlesung mit Folien" , "- begleitende Übungen mit Hausaufgaben" , "- Gruppenarbeiten" ;
+	schema:educationalUse "Dient der Vorbereitung darauf aufbauender Veranstaltungen, insbesondere bzgl. Modellierung von Prozessen." ;
+	schema:citation <https://www.isbn-international.org/978-3486584462> , <http://doi.org/10.1007/978-3-8348-2428-8> ,
+	<https://www.isbn-international.org/9783865811998> , <https://www.isbn-international.org/978-3642354458> ;		
+	schema:hasPart module:Lehrformen_SYSA , module:ZusWorkload_SYSA ; 
+	schema:timeRequired "PT150H" ;
+	schema:coursePrerequisites  "keine" ; 
+	#schema:isBasedOn module:STG_MODULE ;
+	schema:about module:LResults_SYSA , module:Content_SYSA , module:Exam_SYSA ;
+	schema:educationalCredentialAwarded "5" ;	
+	schema:hasCourseInstance module:Wi18_SYSA ;
+	schema:educationalAlignment module:Curr_WIB_SYSA , module:ModuleType_WIB_SYSA , module:SWS_WIB_SYSA, module:Note_WIB_SYSA .
+			
+## for accountable Persons & instructors (identification via Web-Site and/or ORCID)
+#  no additional data needed
+			
+## for authors (identification via XING, ORCID, Researchgate) 
+xing:Hermann_Krallmann a schema:Author ;
+			rdfs:label "Hermann Krallmann" ;
+			schema:givenName "Hermann" ;
+			schema:familyName "Krallmann" ;
+			schema:honorificPrefix "Prof. Dr." .
+
+resGate:Marten_Schoenherr a schema:Author ;
+			rdfs:label "Marten Schönherr" ;
+			schema:givenName "Marten" ;
+			schema:familyName "Schönherr" ;
+			schema:honorificPrefix "Dr.-Ing. habil." .
+			
+resGate:Matthias_Trier2 a schema:Author ;
+			rdfs:label "Matthias Trier" ;
+			schema:givenName "Matthias" ;
+			schema:familyName "Trier" ;
+			schema:honorificPrefix "Dr." .
+			
+wd:Q271226 a schema:Author ;
+			rdfs:label "Donella Meadows" ;
+			schema:givenName "Donella" ;
+			schema:familyName "Meadows" ;
+			schema:honorificPrefix "Dr." .
+			
+xing:Chris_Rupp a schema:Author ;
+			rdfs:label "Chris Rupp" ;
+			schema:givenName "Chris" ;
+			schema:familyName "Rupp" ;
+			schema:honorificPrefix "Dipl.-Inf." .
+			
+## for affiliations of persons (identification via WikiData)
+#  no additional data needed
+			
+## for citations: Books, Articles (resp. CWS) & Digital Documents (identification via DOI, ISBN or URL)		
+<https://www.isbn-international.org/978-3486584462> a schema:Book ;
+			rdfs:label "Krallmann: Systemanalyse" ;
+			schema:author xing:Hermann_Krallmann , resGate:Marten_Schoenherr , resGate:Matthias_Trier2 ;
+			schema:headline "Systemanalyse im Unternehmen - Prozessorientierte Methoden der Wirtschaftsinformatik" ;
+			schema:bookEdition "5. Auflage" ;
+			schema:datePublished "2007" ;
+			schema:url "https://www.researchgate.net/publication/200167235_Systemanalyse_im_Unternehmen_-_prozessorientierte_Methoden_der_Wirtschaftsinformatik" . 
+			
+<https://www.isbn-international.org/9783865811998> a schema:Book ;
+			rdfs:label "Meadows: Grenzen des Denkens" ;
+			schema:author wd:Q271226 ;
+			schema:headline "Die Grenzen des Denkens - Wie wir sie mit System erkennen und überwinden können" ;
+			schema:bookEdition "" ;
+			schema:datePublished "2010" ;
+			schema:url "https://www.weltbild.de/media/txt/pdf/9783865811998-023644773-die-grenzen-des-denkens.pdf" . 
+
+<https://www.isbn-international.org/978-3642354458> a schema:Book ;
+			rdfs:label "Rupp: Systemanalyse" ;
+			schema:author  xing:Chris_Rupp ;
+			schema:publisher <https://www.sophist.de> ;
+			schema:headline "Systemanalyse kompakt" ;
+			schema:bookEdition "2. Auflage" ;
+			schema:datePublished "2008" ;
+			schema:url "https://www.sophist.de/publikationen/systemanalyse-kompakt/" . 
+				
+## for publishers of Books, Articles, Journals & Digital Documents
+<https://www.sophist.de> a 	schema:Organization ;
+			rdfs:label "SOPHIST Group" ;
+			schema:legalName "SOPHIST Group GmbH" ;
+			schema:url "https://www.sophist.de" .
+			
+## for didactic parts of a course
+module:Lehrformen_SYSA a schema:CreativeWorkSeries ;
+			schema:name "Lehrformen" ;
+			schema:hasPart module:LF1_SYSA , module:LF2_SYSA .
+
+module:LF1_SYSA a schema:CreativeWork ;
+			schema:name "Vorlesung" ;
+			schema:timeRequired "PT30H" .
+			
+module:LF2_SYSA a schema:CreativeWork ;
+			schema:name "Übung" ;
+			schema:timeRequired "PT30H" .
+			
+module:ZusWorkload_SYSA a schema:CreativeWorkSeries ;
+			schema:name "Zusammensetzung der Workload" ;
+			schema:hasPart module:WL1_SYSA , module:WL2_SYSA .
+			
+module:WL1_SYSA a schema:CreativeWork ;
+			schema:name "Kontakt" ;
+			schema:timeRequired "PT60H" .
+			
+module:WL2_SYSA a schema:CreativeWork ;
+			schema:name "Selbststudium" ;
+			schema:timeRequired "PT90H" .
+					
+## for ItemLists (about): Learning Results, Content, Examination Forms
+module:LResults_SYSA a schema:ItemList ;
+			schema:identifier "Results" ;
+			schema:name "Lernergebnisse SYSA" ;
+			schema:itemListElement "- Studierende sind in der Lage, in einer Organisation gegenwärtige Prozessstrukturen zu sichten." , "- Sie können deren Problemfelder identifizieren und eine Neukonzeption entwerfen." , "- Sie können die nötigen Implementierungsgegenstände benennen (beispielsweise Einführung von Standardsoftware oder Neuentwicklung einer Software oder Mischform aus beidem)." .
+			
+module:Content_SYSA a schema:ItemList ;
+			schema:identifier "Content" ;
+			schema:name "Inhalt SYSA" ;
+			schema:itemListElement "1) Einführung in die wesentlichen Phasen einer Systemanalyse", "2) Projektbegründung: Benennung und Erläuterung des Betrachtungsgegenstandes samt seiner Relevanz im Rahmen der jeweiligen Organisation" , "3) IST-Analyse: Analyse der bestehenden Situation (Prozesserfassung)" , "4) Problembeschreibung: Isolierung des Betrachtungsraumes, welchem mit einer Lösung begegnet werden soll" , "5) SOLL-Konzeption: Erläuterung des Vorgehens zur Adressierung des Problembereichs, beispielsweise Benennung notwendiger einzuführender Software und/oder dedizierte Eigen-Entwicklung von Software" , "6) Implementierung: Realisierung von Maßnahmen (beispielsweise konkrete Entwicklungsaufgaben)" , "7) Nachbereitung: Schulung, Dokumentation, etc." , "- Es wird versucht, das Adressieren der genannten Phasen an Praxisbeispielen (Fallstudien, etc.) zu üben." .
+
+module:Exam_SYSA a schema:ItemList ;
+			schema:identifier "Exam" ;
+			schema:name "Studien-/Prüfungsleistungen SYSA" ;
+			schema:itemListElement "Klausur" .
+			
+## for CourseInstances
+module:Wi18_SYSA a schema:CourseInstance ;
+			schema:courseMode "jedes Wintersemester" ;
+			schema:duration "P0.5Y" ;
+			schema:identifier "SYSA WiSe18/19" ;
+			schema:instructor thb-fbwm:dietmar-wikarski .
+			
+## for AlignmentObjects 
+module:Curr_WIB a schema:AlignmentObject ;
+			schema:alignmentType "Zuordnung zum Curriculum" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "WI Ba, 1. Semester" ;
+			schema:targetDescription "Wirtschaftsinformatik Bachelor, 1. Semester (Vollzeitmodus)" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:ModuleType_WIB a schema:AlignmentObject ;
+			schema:alignmentType "Modultyp" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "Pflichtmodul" ;
+			schema:targetDescription "muss von allen Studierenden belegt und absolviert werden" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:SWS_WIB a schema:AlignmentObject ;
+			schema:alignmentType "SWS" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "4 SWS" ;
+			schema:targetDescription "Umfang des Moduls in Semesterwochenstunden" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:Note_WIB a schema:AlignmentObject ;
+			schema:alignmentType "Gewichtung der Note" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, § 13" ;
+			schema:targetName "1/3 der Fachnote, 3,33 % des Mittelwerts aller Modulnoten, 2,67 % der Abschlussnote" ;
+			schema:targetDescription "Gewichtungsanteile der Note im Hinblick auf die spezifische Fachnote (1/3), den Mittelwert aller Fachnoten (3,33 %) sowie die Abschlussnote (2,67 %)" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+### Module WIB_PMSK
+## main Template
+module:WIB_PMSK a schema:Course ;
+	rdfs:label "Projekt-Mgt & Soziale Komp." ;
+	schema:name "Projektmanagement und Soziale Kompetenzen"@de , "Project Management and Social Competences"@en ;
+	schema:datePublished "2018-06-01" ;
+	schema:PMSK "PMSK" ;
+	schema:url "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/projektmanagement-und-soziale-kompetenzen/" ;
+	schema:learningResourceType "- Vorlesung", "- Übung" ;
+	schema:accountablePerson thb-fbwm:andreas-johannsen ;
+	schema:comment "ssessment-Center (Videoanalyse), Fallbeispiele aus der Unternehmenspraxis, Möglichkeit des Erwerbs des Zertifikats „Certified Professional in Project Management“ des ASQF/ISQI durch freiwillige Teilnahme an einer zusätzlichen einwöchigen Blockveranstaltung." ;
+	schema:inLanguage "de" , "en" ;
+	schema:interactivityType "- Vorlesung mit gemischten Medien (Folien, Tafelarbeit, Demos)" , "- Begleitende Übungen mit Assessment Center (Videoaufzeichnungen und -Auswertungen in der Gruppe)" , "- Hausarbeit" , "- Gruppenarbeit", "- Präsentationen" ;
+	schema:educationalUse "Dient der Vorbereitung darauf aufbauender Veranstaltungen." ;
+	schema:citation <https://www.isbn-international.org/978-3-8274-1161-7> ,
+					<https://www.dimap.ufrn.br/~jair/ES/artigos/SpiralModelBoehm.pdf> ,
+					<https://www.isbn-international.org/978-3-86490-429-5> ,
+					<http://doi.org/10.1007/978-3-322-82334-2k> ,
+					<https://www.isbn-international.org/3763229892> ,
+					<https://www.isbn-international.org/978-38974949303>,
+					<https://www.isbn-international.org/978-3499174896> ;		
+	schema:hasPart module:Lehrformen_PMSK , module:ZusWorkload_PMSK ; 
+	schema:timeRequired "PT150H" ;
+	schema:coursePrerequisites  "keine" ; 
+	#schema:isBasedOn module:STG_Module ;
+	schema:about module:LResults_PMSK , module:Content_PMSK , module:Exam_PMSK ;
+	schema:educationalCredentialAwarded "5" ;	
+	schema:hasCourseInstance module:Wi18_PMSK ;
+	schema:educationalAlignment module:Curr_WIB_PMSK , module:ModuleType_WIB_PMSK , module:SWS_WIB_PMSK, module:Note_WIB_PMSK .
+			
+## for accountable Persons & instructors (identification via Web-Site and/or ORCID)
+thb-fbwm:andreas-johannsen a schema:Lecturer ;
+			rdfs:label "Prof. Dr. Andreas Johannsen" ;
+			schema:sameAs resGate:Andreas_Johannsen ;
+			schema:givenName "Andreas" ;
+			schema:familyName "Johannsen" ;
+			schema:honorificPrefix "Prof. Dr. rer. oec." ;
+			schema:honorificSuffix "" ;
+			schema:email "andreas.johannsen@th-brandenburg.de" ;
+			schema:affiliation wd:Q1391182 .
+			
+## for authors (identification via XING, ORCID, Researchgate) 
+wd:Q1117939 a schema:Author ;
+			rdfs:label "Helmut Balzert" ;
+			schema:givenName "Helmut" ;
+			schema:familyName "Balzert" ;
+			schema:honorificPrefix "Prof. Dr." .
+			
+wd:Q92815 a schema:Author ;
+			rdfs:label "Barry W. Boehm" ;
+			schema:givenName "Barry W." ;
+			schema:familyName "Boehm" ;
+			schema:honorificPrefix "Prof. Dr." .
+
+xing:Anne_Kramer14 a schema:Author ;
+			rdfs:label "Anne Kramer" ;
+			schema:givenName "Anne" ;
+			schema:familyName "Kramer" ;
+			schema:honorificPrefix "Dr." .
+			
+xing:Horst_Kostal a schema:Author ;
+			rdfs:label "Horst Kostal" ;
+			schema:givenName "Horst" ;
+			schema:familyName "Kostal" ;
+			schema:honorificPrefix "" .
+
+xing:Ewa_Sadowicz a schema:Author ;
+			rdfs:label "Ewa Sadowicz" ;
+			schema:givenName "Ewa" ;
+			schema:familyName "Sadowicz" ;
+			schema:honorificPrefix "" .
+
+<https://buch-findr.de/autoren/kress-nadina-maria/> a schema:Author ;
+			rdfs:label "Nadina-Maria Kress" ;
+			schema:givenName "Nadina-Maria" ;
+			schema:familyName "Kress" ;
+			schema:honorificPrefix "" .
+			
+xing:Andreas_vonStudnitz a schema:Author ;
+			rdfs:label "Andreas von Studnitz" ;
+			schema:givenName "Andreas" ;
+			schema:familyName "von Studnitz" ;
+			schema:honorificPrefix "" .
+
+wd:Q896198 a schema:Author ;
+			rdfs:label "Samy Molcho" ;
+			schema:givenName "Samy" ;
+			schema:familyName "Molcho" ;
+			schema:honorificPrefix "" .
+			
+xing:JosefW_Seifert a schema:Author ;
+			rdfs:label "Josef W. Seifert" ;
+			schema:givenName "Josef W." ;
+			schema:familyName "Seifert" ;
+			schema:honorificPrefix "" .
+
+wd:Q71488 a schema:Author ;
+			rdfs:label "Friedemann Schulz von Thun" ;
+			schema:givenName "Friedemann" ;
+			schema:familyName "Schulz von Thun" ;
+			schema:honorificPrefix "Dr. oec. h. c." .
+
+## for affiliations of persons (identification via WikiData)
+# no additional data needed
+			
+## for citations: Books, Articles (resp. CWS) & Digital Documents (identification via DOI, ISBN or URL)		
+<https://www.isbn-international.org/978-3-8274-1161-7> a schema:Book ;
+			rdfs:label "Balzert: SW-Technik, Bd. 2" ;
+			schema:author wd:Q1117939 ;
+			schema:headline "Lehrbuch der Softwaretechnik: Softwaremanagement" ;
+			schema:bookEdition "2" ;
+			schema:datePublished "2008" ;
+			schema:url "https://www.springer.com/de/book/9783827411617" . 
+			
+<https://www.dimap.ufrn.br/~jair/ES/artigos/SpiralModelBoehm.pdf> a schema:Article ;
+			rdfs:label "Boehm: Spiral Model" ;
+			schema:author wd:Q92815 ;
+			schema:headline "A spiral model of software development and enhancement" ;
+			schema:datePublished "1988" ;
+			schema:url "https://www.dimap.ufrn.br/~jair/ES/artigos/SpiralModelBoehm.pdf" ;
+			schema:isPartOf <https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=6> ;
+			schema:pageStart "61" ;
+			schema:pageEnd "72" . 
+			
+<https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=6> a schema:CreativeWork ;
+			rdfs:label "Journal: Computer, 1983/6" ;
+			schema:headline "Computer" ;
+			schema:url "https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=6" .
+
+<https://www.isbn-international.org/978-3-86490-429-5> a schema:Book ;
+			rdfs:label "Johannsen e.a.: Basiswissen SW-PM" ;
+			schema:author thb-fbwm:andreas-johannsen , xing:Anne_Kramer14 , xing:Horst_Kostal , xing:Ewa_Sadowic ;
+			schema:headline "Basiswissen für Softwareprojektmanager im klassischen und agilen Umfeld" ;
+			schema:bookEdition "" ;
+			schema:datePublished "2017" ;
+			schema:url "https://www.dpunkt.de/buecher/12782/9783864904295-basiswissen-f%E3%BCr-softwareprojektmanager-im-klassischen-und-agilen-umfeld.html" . 
+
+<http://doi.org/10.1007/978-3-322-82334-2k> a schema:Book ;
+			rdfs:label "Kress/von Studnitz: Führungskräfte" ;
+			schema:author <https://buch-findr.de/autoren/kress-nadina-maria/> , xing:Andreas_vonStudnitz ;
+			schema:headline "Überlebensstrategien für Führungskräfte" ;
+			schema:bookEdition "" ;
+			schema:datePublished "2001" ;
+			schema:url "https://www.springer.com/de/book/9783322823359" . 
+			
+<https://www.isbn-international.org/3763229892> a schema:Book ;
+			rdfs:label "Molcho: Körpersprache" ;
+			schema:author wd:Q896198 ;
+			schema:headline "Körpersprache" ;
+			schema:bookEdition "1" ;
+			schema:datePublished "1983" ;
+			schema:url "http://www.samy-molcho.de/luv.htm" . 
+
+<https://www.isbn-international.org/978-38974949303> a schema:Book ;
+			rdfs:label "Seifert: Visualisieren ..." ;
+			schema:author xing:JosefW_Seifert ;
+			schema:headline "Visualisieren, Präsentieren, Moderieren" ;
+			schema:bookEdition "21" ;
+			schema:datePublished "2001" ;
+			schema:url "https://www.gabal-verlag.de/buch/visualisieren_praesentieren_moderieren/9783869362403" . 
+
+<https://www.isbn-international.org/978-3499174896> a schema:Book ;
+			rdfs:label "Schulz von Thun: Miteinander reden" ;
+			schema:author wd:Q71488 ;
+			schema:headline "Miteinander Reden, Teil 1-3" ;
+			schema:bookEdition "48" ;
+			schema:datePublished "2010" ;
+			schema:url "https://www.schulz-von-thun.de/veroeffentlichungen/miteinander-reden" . 
+	
+## for publishers of Books, Articles, Journals & Digital Documents
+# no data necessary
+			
+## for didactic parts of a course
+module:Lehrformen_PMSK a schema:CreativeWorkSeries ;
+			schema:name "Lehrformen" ;
+			schema:hasPart module:LF1_PMSK , module:LF2_PMSK .
+
+module:LF1_PMSK a schema:CreativeWork ;
+			schema:name "Vorlesung" ;
+			schema:timeRequired "PT30H" .
+			
+module:LF2_PMSK a schema:CreativeWork ;
+			schema:name "Übung" ;
+			schema:timeRequired "PT30H" .
+			
+module:ZusWorkload_PMSK a schema:CreativeWorkSeries ;
+			schema:name "Zusammensetzung der Workload" ;
+			schema:hasPart module:WL1_PMSK , module:WL2_PMSK .
+			
+module:WL1_PMSK a schema:CreativeWork ;
+			schema:name "Präsenz" ;
+			schema:timeRequired "PT60H" .
+			
+module:WL2_PMSK a schema:CreativeWork ;
+			schema:name "Eigenstudium" ;
+			schema:timeRequired "PT60H" .
+					
+## for ItemLists (about): Learning Results, Content, Examination Forms
+module:LResults_PMSK a schema:ItemList ;
+			schema:identifier "Results" ;
+			schema:name "Lernergebnisse PMSK" ;
+			schema:itemListElement "- Die Studierenden erkennen und diskutieren soziale Kompetenzen im Kontext des Projektmanagements.", "- Sie identifizieren besondere soziale Phänomene und Probleme in Projekten.", "- Sie kennen die Grundzüge und Methoden des professionellen Projektmanagements.", "- Sie erkennen die eigenen Ressourcen. Sie können die Erfordernisse des beruflichen Miteinanders darlegen sowie den Ausbau des persönlichen Potentials identifizieren.", "- Die Studierenden können verbreitete Projektmanagement-Methoden anwenden.", "- Sie nutzen die Möglichkeiten erfolgreichen Kommunizierens (diskutieren, erläutern, erklären, verhandeln etc.) in Projektsituationen", "- Sie wenden unterschiedliche Teamarbeitsformen im Rahmen der Erstellung und Präsentation der Gruppenarbeit an", "- Sie bereiten sich auf bevorstehende Bewerbungsabläufe vor und wenden Methoden des Zeitmanagements sowie der Arbeitsorganisation an." .
+			
+module:Content_PMSK a schema:ItemList ;
+			schema:identifier "Content" ;
+			schema:name "Inhalt PMSK" ;
+			schema:itemListElement "Management von Software-Projekten, im Einzelnen:" , "1. Grundlagen des Projektmanagements" , "2.  Spezifisches Management von Software-Projekten" , "3.  Instrumente: Erhebungstechniken, Methoden zur Aufwandsschätzung, Kreativtechniken, Pflichtenhefte, Umgang mit Projektrisiken, Planungstechniken (Phasenplanung, Netzplantechnik)" , "4. Qualitätsmanagement (Grundlagen, Produktqualität, Prozessqualität, Methoden, Qualitätspolitik, Testen von Programmen, Testobjekte und Ziele in den verschiedenen Projektphasen)" , "Grundlagen sozialer Kompetenzen, im Einzelnen:" , "5. Soziologische/psychologische Grundlagen, Habitus, Selbstbild/Fremdbild, individuelle Wahrnehmung, Eisbergmodell, Bedürfnisse, Werte etc." , "6. Grundlagen der Kommunikation, TZI, TA – Analyse, 4-Seiten-Modell, Gesprächsführung" , "7. Kooperation in Unternehmen, Teamentwicklung, Was ist ein Team?, Strukturen , Problematik, Auswahl und Einsatz von Teams etc." , "8. Teamtraining: Gruppendynamik, Rollenverhalten , erfolgreiches Teamverhalten" , "9. Persönliches Auftreten: Situationsadäquates Auftreten (Benehmen, Kleidung, Körpersprache, Rhetorik..)" , "10. Personalentwicklung: Anforderungsprofile, Assessment – Center, Multimodale Personalauswahl" , "11. Bewerbungstraining (Teil I): Lebenslaufanalysen, Arbeitszeugnisse" , "12. Bewerbungstraining (Teil II): E-Mail/Online- u. Multimedia – Bewerbungen, Bewerbungsgespräche" , "13. Soziale Kompetenzen im virtuellen Raum, Online-Kommunikation im Vergleich zu Präsenzkommunikation, Vergleichsanalysen" , "14. Lern- und Arbeitstechniken (Teil I), Lerntechniken , Zeitmanagement" , "15. Lern- und Arbeitstechniken (Teil II), Arbeitsorganisation, Stressbewältigung" .
+
+module:Exam_PMSK a schema:ItemList ;
+			schema:identifier "Exam" ;
+			schema:name "Studien-/Prüfungsleistungen PMSK" ;
+			schema:itemListElement "- Assessment Center Bericht (10 %)" , "- Hausarbeit mit Präsentation (40 %)" , "- Klausur (50 %)" .
+			
+## for CourseInstances
+module:Wi18_PMSK a schema:CourseInstance ;
+			schema:courseMode "jedes Wintersemester" ;
+			schema:duration "P0.5Y" ;
+			schema:identifier "PMSK WiSe18/19" ;
+			schema:instructor thb-fbwm:andreas-johannsen .
+			
+## for AlignmentObjects 
+module:Curr_WIB_PMSK a schema:AlignmentObject ;
+			schema:alignmentType "Zuordnung zum Curriculum" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "WI Ba, 3. Semester" ;
+			schema:targetDescription "Wirtschaftsinformatik Bachelor, 3. Semester (Vollzeitmodus)" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:ModuleType_WIB_PMSK a schema:AlignmentObject ;
+			schema:alignmentType "Modultyp" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "Pflichtmodul" ;
+			schema:targetDescription "muss von allen Studierenden belegt und absolviert werden" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:SWS_WIB_PMSK a schema:AlignmentObject ;
+			schema:alignmentType "SWS" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "4 SWS" ;
+			schema:targetDescription "Umfang des Moduls in Semesterwochenstunden" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:Note_WIB_PMSK a schema:AlignmentObject ;
+			schema:alignmentType "Gewichtung der Note" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, § 13" ;
+			schema:targetName "1/3 der Fachnote, 3,33 % des Mittelwerts aller Modulnoten, 2,67 % der Abschlussnote" ;
+			schema:targetDescription "Gewichtungsanteile der Note im Hinblick auf die spezifische Fachnote (1/3), den Mittelwert aller Fachnoten (3,33 %) sowie die Abschlussnote (2,67 %)" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+### Module WIB_SCIS
+## main Template
+module:WIB_AAIT a schema:Course ;
+	rdfs:label "Auswahl & Anpassung IT-Dienste" ;
+	schema:name "Auswahl und Anpassung von IT-Diensten"@de , "Selection and Customizing of IT Services"@en ;
+	schema:datePublished "2018-06-01" ;
+	schema:AAIT "AAIT" ;
+	schema:url "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/auswahl-und-anpassung-von-it-diensten/" ;
+	schema:learningResourceType "- Vorlesung", "- Übung", "- Projekt" ;
+	schema:accountablePerson thb-fbwm:vera-meister ;
+	schema:comment "Austauschworkshop oder Poster Session in englischer Sprache in Kooperation mit dem Studiengang Ökonomische Kybernetik der Alfred Nobel University Dnipro (Ukraine); Praxisvorträge von Unternehmensvertretern" ;
+	schema:inLanguage "de" , "en" ;
+	schema:interactivityType "- Seminaristische Vorlesungen" , "- Videovorlesungen" , "- Übungen zur Anwendung von Frameworks und Methoden" , "- Workshops zu Methoden und Werkzeugen" , "- Teambasierte Projektarbeit mit Meilensteinmeetings" , "- Studentische Präsentationen" , "- Konsultationen und Coaching" ;
+	schema:educationalUse "Das Modul kann auch im Masterstudiengang Informatik (dortiger Titel: Softwareauswahl und -bewertung) entsprechend der geltenden SPO verwendet werden." ;
+	schema:citation <https://www.isbn-international.org/978-1500555788> ,
+					<https://www.isbn-international.org/0-321-71151-3> ,
+					<http://doi.org/10.1007/b97668> ,
+					<https://www.isbn-international.org/978-3-446-43893-4> ,
+					wd:Q428361 ;		
+	schema:hasPart module:Lehrformen_AAIT , module:ZusWorkload_AAIT ; 
+	schema:timeRequired "PT150H" ;
+	#schema:coursePrerequisites  "" ; 
+	schema:isBasedOn module:WIB_INFM , module:WIB_SWEN , module:WIB_MGTO ;
+	schema:about module:LResults_AAIT , module:Content_AAIT , module:Exam_AAIT ;
+	schema:educationalCredentialAwarded "5" ;	
+	schema:hasCourseInstance module:Wi18_AAIT ;
+	schema:educationalAlignment module:Curr_WIB_AAIT , module:ModuleType_WIB_AAIT , module:SWS_WIB_AAIT, module:Note_WIB_AAIT .
+			
+## for accountable Persons & instructors (identification via Web-Site and/or ORCID)
+# no additional data needed
+			
+## for authors (identification via XING, ORCID, Researchgate) 
+linkedIn:alkuebler a schema:Author ;
+			rdfs:label "Al Kuebler" ;
+			schema:givenName "Al" ;
+			schema:familyName "Kuebler" ;
+			schema:honorificPrefix "" .
+			
+<https://resources.sei.cmu.edu/library/author.cfm?authorID=4601> a schema:Author ;
+			rdfs:label "Brian P. Gallagher" ;
+			schema:givenName "Brian P." ;
+			schema:familyName "Gallagher" ;
+			schema:honorificPrefix "" .
+			
+<https://resources.sei.cmu.edu/library/author.cfm?authorID=4111> a schema:Author ;
+			rdfs:label "Mike Phillips" ;
+			schema:givenName "Mike" ;
+			schema:familyName "Phillips" ;
+			schema:honorificPrefix "" .
+			
+<https://resources.sei.cmu.edu/library/author.cfm?authorID=3369> a schema:Author ;
+			rdfs:label "Karen Richter" ;
+			schema:givenName "Karen" ;
+			schema:familyName "Richter" ;
+			schema:honorificPrefix "" .
+			
+<https://resources.sei.cmu.edu/library/author.cfm?authorID=3955> a schema:Author ;
+			rdfs:label "Sandra Shrum" ;
+			schema:givenName "Sandra" ;
+			schema:familyName "Shrum" ;
+			schema:honorificPrefix "" .
+			
+linkedIn:navneetbhushan a schema:Author ;
+			rdfs:label "Navneet Bhushan" ;
+			schema:givenName "Navneet" ;
+			schema:familyName "Bhushan" ;
+			schema:honorificPrefix "" .
+			
+linkedIn:kanwalrai a schema:Author ;
+			rdfs:label "Rai Kanwal" ;
+			schema:givenName "Rai" ;
+			schema:familyName "Kanwal" ;
+			schema:honorificPrefix "" .
+			
+## for affiliations of persons (identification via WikiData)
+# no additional data needed
+			
+## for citations: Books, Articles (resp. CWS) & Digital Documents (identification via DOI, ISBN or URL)		
+<https://www.isbn-international.org/978-1500555788> a schema:Book ;
+			rdfs:label "Kuebler: Technical Impact" ;
+			schema:author linkedIn:alkuebler ;
+			schema:headline "Technical Impact – Making your Information Technology Effective and Keeping it That Way" ;
+			schema:bookEdition "4th ed." ;
+			schema:datePublished "2014" ;
+			schema:url "" . 
+
+<https://www.isbn-international.org/0-321-71151-3> a schema:Book ;
+			rdfs:label "CMMI for Acq. - Guidelines" ;
+			schema:author <https://resources.sei.cmu.edu/library/author.cfm?authorID=4601> , <https://resources.sei.cmu.edu/library/author.cfm?authorID=4111> , <https://resources.sei.cmu.edu/library/author.cfm?authorID=3369> , <https://resources.sei.cmu.edu/library/author.cfm?authorID=3955> ;
+			schema:headline "CMMI for Acquisition – Guidelines for Improving the Acquisition of Products and Services" ;
+			schema:bookEdition "2nd ed." ;
+			schema:datePublished "2011" ;
+			schema:url "https://resources.sei.cmu.edu/library/asset-view.cfm?assetid=31042" . 
+
+<http://doi.org/10.1007/b97668> a schema:Book ;
+			rdfs:label "Bhushan/Kanwal: Strategic Decision Making" ;
+			schema:author linkedIn:navneetbhushan , linkedIn:kanwalrai ;
+			schema:headline "Strategic Decision Making – Applying the Analytic Hierarchy Process" ;
+			schema:bookEdition "" ;
+			schema:datePublished "2004" ;
+			schema:url "https://www.springer.com/de/book/9781852337568" . 
+
+<https://www.isbn-international.org/978-3-446-43893-4> a schema:Book ;
+			rdfs:label "Rupp: Requirements-Engineering & Mgt." ;
+			schema:author xing:Chris_Rupp ;
+			schema:publisher <https://www.sophist.de> ;
+			schema:headline "Requirements-Engineering und -Management" ;
+			schema:bookEdition "6" ;
+			schema:datePublished "2014" ;
+			schema:url "https://www.sophist.de/re6/" . 
+
+wd:Q428361 a schema:DigitalDocument ; 			
+			rdfs:label "CMMI-ACQ V. 1.3" ;
+			schema:publisher wd:Q1662502 ;
+			schema:headline "CMMI for Acquisition, V. 1.3" ;
+			schema:datePublished "2010" ;
+			schema:url "https://resources.sei.cmu.edu/asset_files/TechnicalReport/2010_005_001_15284.pdf" .
+			
+## for publishers of Books, Articles, Journals & Digital Documents
+wd:Q1662502 a 	schema:Organization ;
+			rdfs:label "CMMI Institute" ;
+			schema:legalName "CMMI Institute - An ISACA Enterprise" ;
+			schema:url "https://cmmiinstitute.com/" .
+			
+## for didactic parts of a course
+module:Lehrformen_AAIT a schema:CreativeWorkSeries ;
+			schema:name "Lehrformen" ;
+			schema:hasPart module:LF1_AAIT , module:LF2_AAIT .
+
+module:LF1_AAIT a schema:CreativeWork ;
+			schema:name "Vorlesung" ;
+			schema:timeRequired "PT30H" .
+			
+module:LF2_AAIT a schema:CreativeWork ;
+			schema:name "Übung" ;
+			schema:timeRequired "PT30H" .
+			
+module:ZusWorkload_AAIT a schema:CreativeWorkSeries ;
+			schema:name "Zusammensetzung der Workload" ;
+			schema:hasPart module:WL1_AAIT , module:WL2_AAIT , module:WL3_AAIT , module:WL4_AAIT , module:WL5_AAIT .
+			
+module:WL1_AAIT a schema:CreativeWork ;
+			schema:name "Präsenzvorlesungen" ;
+			schema:timeRequired "PT30H" .
+			
+module:WL2_AAIT a schema:CreativeWork ;
+			schema:name "Präsenzübungen" ;
+			schema:timeRequired "PT15H" .
+
+module:WL1_AAIT a schema:CreativeWork ;
+			schema:name "betreute Projektarbeit" ;
+			schema:timeRequired "PT15H" .
+			
+module:WL2_AAIT a schema:CreativeWork ;
+			schema:name "Selbststudium" ;
+			schema:timeRequired "PT20H" .
+
+module:WL2_AAIT a schema:CreativeWork ;
+			schema:name "selbständige Projektarbeit" ;
+			schema:timeRequired "PT70H" .
+
+## for ItemLists (about): Learning Results, Content, Examination Forms
+module:LResults_AAIT a schema:ItemList ;
+			schema:identifier "Results" ;
+			schema:name "Lernergebnisse AAIT" ;
+			schema:itemListElement "- Die Studierenden kennen das internationale Framework für die Gestaltung strukturierter Prozesse der Auswahl und Anpassung von IT-Diensten CMMI-ACQ V1.3." , "- Sie beherrschen wissenschaftlich begründete Methoden zur Erhebung, Verwaltung und Umsetzung von Anforderungen sowie zur systematischen Auswahl und Anpassung von IT-Diensten." , "- Sie können Methoden der agilen Projektsteuerung im Kontext der Beschaffung und Implementierung von IT-Diensten in der betrieblichen Praxis anwenden." , "- Sie verstehen die Zusammenhänge im IT-Projektmanagement im Hinblick auf Prozessqualität und Prozessreife nach CMMI-ACQ." .
+			
+module:Content_AAIT a schema:ItemList ;
+			schema:identifier "Content" ;
+			schema:name "Inhalt AAIT" ;
+			schema:itemListElement "1) Projektbezogene IT-Management-Frameworks: Differenzierung Projekt-Definitionen, Bedeutung von Frameworks, Überblick über Projektbezogene IT-Management-Frameworks, Argumente für den Einsatz von CMMI-ACQ, Tools für das Projektmanagement" , "2) CMMI-ACQ – Grundlagen: Herkunft, Strukturmodell, Prozessgebiete, Fähigkeits- und Reifegrade, Begutachtungsprozesse, CMMI User Stories" , "3)	CMMI ausgewählte Prozessgebiete 1: Beschaffungs-gegenstände und Initialfragen, Beziehungen zwischen den Prozessgebieten, ARD – Acquisition Requirements Development, REQM – Requirements Management, SSAD – Solicitation and Supplier Agreement Development" ,  "4) Operationalisierung von Specific Practices: Fallstudie zur Anschaffung eines CRM-Systems, Leitfragen für die Operationalisierung von Specific Practices, Erhebung von Kundenanforderungen nach CMMI-ACQ ARD, Identifika-tion potenzieller Lieferanten nach CMMI-ACQ SSAD" , "5) Die Auswahlmethode Analytic Hierarchy Process: Kurzbeschreibung und AHP-Tutorial, AHP Beispiele, Motivation für den Einsatz von AHP, AHP-Quellen, Tools für die Anwendung von AHP" , "6) CMMI ausgewählte Prozessgebiete 2: PP – Project Planning, CM – Configuration Management, ATM – Acquisition Technical Management" .
+
+module:Exam_AAIT a schema:ItemList ;
+			schema:identifier "Exam" ;
+			schema:name "Studien-/Prüfungsleistungen AAIT" ;
+			schema:itemListElement "- Projektarbeit mit Implementierung" , "- Dokumentation und Präsentation" .
+			
+## for CourseInstances
+module:Wi18_AAIT a schema:CourseInstance ;
+			schema:courseMode "jedes Wintersemester" ;
+			schema:duration "P0.5Y" ;
+			schema:identifier "AAIT WiSe18/19" ;
+			schema:instructor thb-fbwm:vera-meister .
+			
+## for AlignmentObjects 
+module:Curr_WIB_AAIT a schema:AlignmentObject ;
+			schema:alignmentType "Zuordnung zum Curriculum" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "WI Ba, 5. Semester" ;
+			schema:targetDescription "Wirtschaftsinformatik Bachelor, 5. Semester (Vollzeitmodus)" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:ModuleType_WIB_AAIT a schema:AlignmentObject ;
+			schema:alignmentType "Modultyp" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "Pflichtmodul" ;
+			schema:targetDescription "muss von allen Studierenden belegt und absolviert werden" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:SWS_WIB_AAIT a schema:AlignmentObject ;
+			schema:alignmentType "SWS" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "4 SWS" ;
+			schema:targetDescription "Umfang des Moduls in Semesterwochenstunden" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:Note_WIB_AAIT a schema:AlignmentObject ;
+			schema:alignmentType "Gewichtung der Note" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, § 13" ;
+			schema:targetName "1/3 der Fachnote, 3,33 % des Mittelwerts aller Modulnoten, 2,67 % der Abschlussnote" ;
+			schema:targetDescription "Gewichtungsanteile der Note im Hinblick auf die spezifische Fachnote (1/3), den Mittelwert aller Fachnoten (3,33 %) sowie die Abschlussnote (2,67 %)" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+### Module WIB_AWIM
+## main Template
+module:WIB_AWIM a schema:Course ;
+	rdfs:label "Angewandte Wissensmodellierung" ;
+	schema:name "Angewandte Wissensmodellierung"@de , "Applied Knowledge Engineering"@en ;
+	schema:datePublished "2018-06-01" ;
+	schema:AWIM "AWIM" ;
+	schema:url "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/wahlpflicht-i-angewandte-wissensmodellierung/" ;
+	schema:learningResourceType "- Vorlesung", "- Übung", "- Projekt" ;
+	schema:accountablePerson thb-fbwm:vera-meister ;
+	schema:comment "" ;
+	schema:inLanguage "de" , "en" ;
+	schema:interactivityType "- Seminaristische Vorlesungen" , "- Praktische Übungen und Konsultationen" , "- Werkzeugtutorials und -präsentationen" , "- Individuelle Projektarbeit" , "- Studentische Präsentationen" , "- Video-Vorlesungen" ;
+	schema:educationalUse "" ;
+	schema:citation <https://www.isbn-international.org/978-3-446-45054-7> ,
+					<https://www.isbn-international.org/1502789647> ,
+					<https://www.omg.org/spec/BPMN/2.0.2/PDF> ,
+					<http://www.omg.org/spec/CMMN/1.1/PDF> ,
+					<http://www.omg.org/spec/DMN/1.1/PDF> ,
+					<https://www.w3.org/TR/skos-reference/> ,
+					<https://www.w3.org/TR/rdf11-primer/> ;		
+	schema:hasPart module:Lehrformen_AWIM , module:ZusWorkload_AWIM ; 
+	schema:timeRequired "PT150H" ;
+	#schema:coursePrerequisites  "" ; 
+	schema:isBasedOn module:WIB_GPMO ;
+	schema:about module:LResults_AWIM , module:Content_AWIM , module:Exam_AWIM ;
+	schema:educationalCredentialAwarded "5" ;	
+	schema:hasCourseInstance module:So18_AWIM ;
+	schema:educationalAlignment module:Curr_WIB_AWIM , module:ModuleType_WIB_AWIM , module:SWS_WIB_AWIM, module:Note_WIB_AWIM .
+			
+## for accountable Persons & instructors (identification via Web-Site and/or ORCID)
+# no additional data needed
+			
+## for authors (identification via XING, ORCID, Researchgate) 
+<http://www.tomdebevoise.com/> a schema:Author ;
+			rdfs:label "Tom Debevoise" ;
+			schema:givenName "Tom" ;
+			schema:familyName "Debevoise" ;
+			schema:honorificPrefix "" .
+			
+linkedIn:jamestaylor a schema:Author ;
+			rdfs:label "James Taylor" ;
+			schema:givenName "James" ;
+			schema:familyName "Taylor" ;
+			schema:honorificPrefix "" .
+			
+## for affiliations of persons (identification via WikiData)
+# no additional data needed
+			
+## for citations: Books, Articles (resp. CWS) & Digital Documents (identification via DOI, ISBN or URL)		
+<https://www.isbn-international.org/1502789647> a schema:Book ;
+			rdfs:label "Debevoise/Taylor: Micro-Guide Process & Decision Modeling" ;
+			schema:author <http://www.tomdebevoise.com> , linkedIn:jamestaylor ;
+			schema:headline "The Micro-Guide to Process and Decision Modeling in BPMN/DMN" ;
+			schema:bookEdition "" ;
+			schema:datePublished "2014" ;
+			schema:url "http://www.decisionmanagementsolutions.com/wp-content/uploads/2014/11/MicroGuide-to-BPMN-and-DMN-Sampler.pdf" . 
+			
+<http://www.omg.org/spec/CMMN/1.1/PDF> a schema:DigitalDocument ; 			
+			rdfs:label "CMMN 1.1" ;
+			schema:publisher wd:Q252733 ;
+			schema:headline "CMMN 1.1 – Technische Spezifikation" ;
+			schema:datePublished "2016" ;
+			schema:url "http://www.omg.org/spec/CMMN/1.1/PDF" .
+			
+<http://www.omg.org/spec/DMN/1.1/PDF> a schema:DigitalDocument ; 			
+			rdfs:label "DMN 1.1" ;
+			schema:publisher wd:Q252733 ;
+			schema:headline "DMN 1.1 – Technische Spezifikation" ;
+			schema:datePublished "2016" ;
+			schema:url "http://www.omg.org/spec/DMN/1.1/PDF" .
+
+<https://www.w3.org/TR/skos-reference/> a schema:DigitalDocument ; 			
+			rdfs:label "SKOS" ;
+			schema:publisher wd:Q37033 ;
+			schema:headline "Simple Knowledge Organization System (SKOS)" ;
+			schema:datePublished "2009" ;
+			schema:url "https://www.w3.org/TR/skos-reference/" .
+
+<https://www.w3.org/TR/rdf11-primer/> a schema:DigitalDocument ; 			
+			rdfs:label "RDF 1.1" ;
+			schema:publisher wd:Q37033 ;
+			schema:headline "Resource Description Framework 1.1 (RDF)" ;
+			schema:datePublished "2014" ;
+			schema:url "https://www.w3.org/TR/rdf11-primer/" .
+
+## for publishers of Books, Articles, Journals & Digital Documents
+wd:Q37033 a schema:Organization ;
+			rdfs:label "W3C" ;
+			schema:legalName "World Wide Web Consortium - W3C" ;
+			schema:url "https://www.w3.org/" .
+			
+## for didactic parts of a course
+module:Lehrformen_AWIM a schema:CreativeWorkSeries ;
+			schema:name "Lehrformen" ;
+			schema:hasPart module:LF1_AWIM , module:LF2_AWIM .
+
+module:LF1_AWIM a schema:CreativeWork ;
+			schema:name "Vorlesung" ;
+			schema:timeRequired "PT30H" .
+			
+module:LF2_AWIM a schema:CreativeWork ;
+			schema:name "Übung" ;
+			schema:timeRequired "PT30H" .
+			
+module:ZusWorkload_AWIM a schema:CreativeWorkSeries ;
+			schema:name "Zusammensetzung der Workload" ;
+			schema:hasPart module:WL1_AWIM , module:WL2_AWIM , module:WL3_AWIM , module:WL4_AWIM , module:WL5_AWIM .
+			
+module:WL1_AWIM a schema:CreativeWork ;
+			schema:name "Präsenzvorlesungen" ;
+			schema:timeRequired "PT30H" .
+			
+module:WL2_AWIM a schema:CreativeWork ;
+			schema:name "Präsenzübungen" ;
+			schema:timeRequired "PT15H" .
+					
+module:WL3_AWIM a schema:CreativeWork ;
+			schema:name "betreute Projektarbeit" ;
+			schema:timeRequired "PT15H" .
+					
+module:WL4_AWIM a schema:CreativeWork ;
+			schema:name "Selbststudium" ;
+			schema:timeRequired "PT20H" .
+					
+module:WL5_AWIM a schema:CreativeWork ;
+			schema:name "selbständige Projektarbeit" ;
+			schema:timeRequired "PT70H" .
+					
+## for ItemLists (about): Learning Results, Content, Examination Forms
+module:LResults_AWIM a schema:ItemList ;
+			schema:identifier "Results" ;
+			schema:name "Lernergebnisse AWIM" ;
+			schema:itemListElement "- Die Studierenden erwerben Grundkompetenzen in der standardbasierten Modellierung fachlichen Wissens differenziert nach Modellierungsgegenständen: ablauforientierte und wissensorientierte Geschäftsprozesse, fachliche operative Entscheidungen, fachliche Vokabulare und Thesauri, fachliche Strukturen und Relationen." , "- Die Studierenden kennen die relevanten Standards der OMG und des W3C für die Modellierung fachlichen Wissens: BPMN/CMMN/DMN (OMG) sowie RDF/SKOS (W3C) und damit einen Satz von Brückentechnologien für die Digitalisierung von Prozessen, den IT-Support von Wissensarbeit, die Automatisierung operativer Entscheidungen, die Analyse von Big-Data-Beständen, die Implementierung künstlicher Intelligenz in fachlichen Kontexten." , "- Die Studierenden definieren und analysieren eine abgegrenzte individuelle Wissensdomäne aus ihrem persönlichen (professionellen) Erfahrungsraum und erstellen einen Komplex fachlicher Modelle unter Verwendung von Standardnotationen." , "- Die Studierenden entwickeln und gestalten eine webbasierte Präsentations- und Dokumentationsplattform für die fachlichen Modelle in ihrer Wissensdomäne." .
+			
+module:Content_AWIM a schema:ItemList ;
+			schema:identifier "Content" ;
+			schema:name "Inhalt AWIM" ;
+			schema:itemListElement "1) BPMN 2.0 – Wiederholung und Vertiefung: Analyse und Interpretation von Mustern zur Ausnahmebehandlung, von Throw-Catch-Pattern, von Mustern zur Mehrfach-instanziierung, von komplexen Prozessmodellen und ihrer Varianten" , "2) CMMN 1.1 – Elemente zur Planung der Fallbearbeitung, weitere CMMN-Elemente, Benutzeroberfläche eines Case-Management-Tools, beispielhafte Modellbeschreibungen, Tool-Support für CMMN." , "3) DMN 1.1 – Anwendungsfälle für fachliche Regeln, Alternativen der technischen Umsetzung von Regeln, DMN Decision Requirement Diagrams, DMN Entscheidungslogik und -syntax, Tool-basierte Implementierungen von DMN-Entscheidungen" ,  "4) SKOS – Grundbegriffe der Wissensmodellierung, Wissensdomänen und ihre Zugänglichkeit, Einführung und Quellen von SKOS, SKOS Keywords für Klassen, Attribute und semantische Relationen, Modellierungstools" , "5) RDF – Assoziative Netze und Themennetze, Faktennetze und Ontologien, Spezifikation von Anforderungen, RDF-Datenmodell, Disambiguierung von Entitäten, Graph-Serialisierung mit RDF-Turtle, Typisierung von Entitäten" .
+
+module:Exam_AWIM a schema:ItemList ;
+			schema:identifier "Exam" ;
+			schema:name "Studien-/Prüfungsleistungen AWIM" ;
+			schema:itemListElement "- Semesterbegleitende Teilleistungen" , "- komplexes Modellierungs- und Entwicklungsprojekt" .
+			
+## for CourseInstances
+module:So18_AWIM a schema:CourseInstance ;
+			schema:courseMode "jedes Winter/Sommersemester" ;
+			schema:duration "P0.5Y" ;
+			schema:identifier "AWIM SoSe18/19" ;
+			schema:instructor thb-fbwm:vera-meister .
+			
+## for AlignmentObjects 
+module:Curr_WIB_AWIM a schema:AlignmentObject ;
+			schema:alignmentType "Zuordnung zum Curriculum" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "WI Ba, 4. Semester" ;
+			schema:targetDescription "Wirtschaftsinformatik Bachelor, 4. Semester (Vollzeitmodus)" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:ModuleType_WIB_AWIM a schema:AlignmentObject ;
+			schema:alignmentType "Modultyp" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "Wahlpflichtmodul" ;
+			schema:targetDescription "kann aus einer Reihe von Modulen ausgewählt werden, wird angeboten, wenn sich genügend Interessenten finden" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:SWS_WIB_AWIM a schema:AlignmentObject ;
+			schema:alignmentType "SWS" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, Anlage 1" ;
+			schema:targetName "4 SWS" ;
+			schema:targetDescription "Umfang des Moduls in Semesterwochenstunden" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+			
+module:Note_WIB_AWIM a schema:AlignmentObject ;
+			schema:alignmentType "Gewichtung der Note" ;
+			schema:educationalFramework "Studien- und Prüfungsordnung für den Bachelor-Studiengang Wirtschaftsinformatik [Business & Information Systems Engineering B.Sc.] (SPO-BSc-WI-THB-2017) im Fachbereich Wirtschaft vom 15.02.2017, § 13" ;
+			schema:targetName "1/3 der Fachnote, 3,33 % des Mittelwerts aller Modulnoten, 2,67 % der Abschlussnote" ;
+			schema:targetDescription "Gewichtungsanteile der Note im Hinblick auf die spezifische Fachnote (1/3), den Mittelwert aller Fachnoten (3,33 %) sowie die Abschlussnote (2,67 %)" ;
+			schema:targetURL "https://www.th-brandenburg.de/fileadmin/user_upload/hochschule/Dateien/Amtliche-Mitteilungen/2017/2017-11-SPO-BSc-WI.pdf" .
+
+### Some additional Courses
+module:WIB_INFM a schema:Course ;
+	rdfs:label "Informationsmanagement" ;
+	schema:name "Informationsmanagement"@de , "Information Management"@en ;
+	schema:courseCode "INFM" ;
+	schema:url "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/informationsmanagement/" . 
+	
+module:WIB_SWEN a schema:Course ;
+	rdfs:label "SW-Engineering" ;
+	schema:name "Software Engineering"@de , "Software Engineering"@en ;
+	schema:courseCode "SWEN" ;
+	schema:url "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/software-engineering/" . 
+	
+module:WIB_MGTO a schema:Course ;
+	rdfs:label "Management & Organisation" ;
+	schema:name "Management und Organisation"@de , "Management and Organization"@en ;
+	schema:courseCode "MGTO" ;
+	schema:url "https://wirtschaft.th-brandenburg.de/studium/plaene-und-termine/vorlesungsverzeichnis/vorlesungsverzeichnis-wi-bachelor/management-und-organisation/" .
+	

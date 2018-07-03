@@ -1,0 +1,12 @@
+---
+layout: default
+rdf_prefix_path: _data/prefixes.pref
+---
+ 
+<h1>Module:</h1>
+      {% assign query = 'SELECT DISTINCT ?ao WHERE { ?ao a schema:Course . } ' %}
+      {% assign resultset = page.rdf | sparql_query: query %}
+        {% for result in resultset %}
+        <a href="{{ result.ao | remove: 'https://bmake.th-brandenburg.de' }}.html">{{ result.ao | rdf_property: 'schema:name' }}</a><br />
+      {% endfor %}
+
