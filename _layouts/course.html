@@ -35,7 +35,7 @@ rdf_prefix_path: _data/prefixes.pref
 
   <tr>
     <th>Dauer des Moduls:</th>
-    <td>{{ courseInstance | rdf_property: 'schema:duration' }}</td>
+    <td>{{ courseInstance | rdf_property: 'schema:duration' | remove: 'P' | remove: 'Y' }} Jahre</td>
   </tr>
 
   <tr>
@@ -65,12 +65,10 @@ rdf_prefix_path: _data/prefixes.pref
     <th>Autor/in:</th>
     <td>
       
-       <ul>
         {% assign resultset = page.rdf | rdf_property: 'schema:accountablePerson', nil, true %}
         {% for result in resultset %}
-        <li>{{ result | rdf_property: 'schema:familyName' }}</li>
+        <li>{{ result | rdf_property: 'schema:honorificPrefix' }} {{ result | rdf_property: 'schema:givenName' }} {{ result | rdf_property: 'schema:familyName' }} {{ result | rdf_property: 'schema:honorificSuffix' }}</li>
         {% endfor %}
-      </ul>
 
     </td>
   </tr>
@@ -79,12 +77,10 @@ rdf_prefix_path: _data/prefixes.pref
     <th>Dozent/in:</th>
     <td>
             
-       <ul>
         {% assign resultset = courseInstance | rdf_property: 'schema:instructor', nil, true %}
         {% for result in resultset %}
-        <li>{{ result | rdf_property: 'schema:familyName' }}</li>
+        <li>{{ result | rdf_property: 'schema:honorificPrefix' }} {{ result | rdf_property: 'schema:givenName' }} {{ result | rdf_property: 'schema:familyName' }} {{ result | rdf_property: 'schema:honorificSuffix' }}</li>
         {% endfor %}
-      </ul>
 
 
     </td>
@@ -95,12 +91,17 @@ rdf_prefix_path: _data/prefixes.pref
     <th>Lehrsprache:</th>
     <td>
       
-      <ul>
         {% assign resultset = page.rdf | rdf_property: 'schema:inLanguage', nil, true %}
         {% for result in resultset %}
-        <li>{{ result }}</li>
+        <li>
+        {% if result == "en" %}
+          Englisch
+        {% endif %}
+        {% if result == "de" %}
+          Deutsch
+        {% endif %}
+        </li>
         {% endfor %}
-      </ul>
 
     </td>
   </tr>
@@ -109,12 +110,10 @@ rdf_prefix_path: _data/prefixes.pref
     <th>Vorraussetzungen:</th>
     <td>
       
-      <ul>
         {% assign resultset = page.rdf | rdf_property: 'schema:coursePrerequisites', nil, true %}
         {% for result in resultset %}
         <li>{{ result }}</li>
         {% endfor %}
-      </ul>
 
     </td>
   </tr>
@@ -124,12 +123,11 @@ rdf_prefix_path: _data/prefixes.pref
     <td>
       
 
-      <ul>
         {% assign resultset = page.rdf | rdf_property: 'schema:isBasedOn', nil, true %}
         {% for result in resultset %}
-        <li>{{ result | rdf_property: 'schema:name' }}</li>
-        {% endfor %}
-      </ul>
+        <li>
+                <a href="{{ result | remove: 'https://bmake.th-brandenburg.de/module/' }}.html">{{ result | rdf_property: 'schema:name' }}</a><br />
+        </li>{% endfor %}
 
     </td>
   </tr>
@@ -143,10 +141,10 @@ rdf_prefix_path: _data/prefixes.pref
     <th>Gesamtworkload und ihre Zusammensetzung:</th>
     <td>
       
-      {% assign query = 'SELECT DISTINCT ?cwName ?cwTime WHERE { ?resourceUri schema:hasPart ?CWseries . ?CWseries schema:hasPart ?cw . ?CWseries schema:name "Zusammensetzung der Workload" . ?cw schema:name ?cwName . ?cw schema:timeRequired ?cwTime } ORDER BY ?elem' %}
+      {% assign query = 'SELECT DISTINCT * WHERE { ?resourceUri schema:additionalProperty ?p . ?p schema:name "Aufteilung der Workload in Stunden" . ?p schema:valueReference ?vr .  ?vr schema:value ?h . ?vr schema:name ?name } ' %}
       {% assign resultset = page.rdf | sparql_query: query %}
         {% for result in resultset %}
-        <li>{{ result.cwName  }} ({{ result.cwTime }})</li>
+        <li>{{ result.h  }} Stunden {{ result.name }}</li>
       {% endfor %}
 
     </td>
@@ -157,10 +155,10 @@ rdf_prefix_path: _data/prefixes.pref
     <td>
       
 
-      {% assign query = 'SELECT DISTINCT ?cwName ?cwTime WHERE { ?resourceUri schema:hasPart ?CWseries . ?CWseries schema:hasPart ?cw . ?CWseries schema:name "Lehrformen" . ?cw schema:name ?cwName . ?cw schema:timeRequired ?cwTime } ORDER BY ?elem' %}
+      {% assign query = 'SELECT DISTINCT * WHERE { ?resourceUri schema:additionalProperty ?p . ?p schema:name "Lehrformen mit Präsenzzeiten in Stunden" . ?p schema:valueReference ?vr .  ?vr schema:value ?h . ?vr schema:name ?name } ' %}
       {% assign resultset = page.rdf | sparql_query: query %}
         {% for result in resultset %}
-        <li>{{ result.cwName  }} ({{ result.cwTime }})</li>
+        <li>{{ result.h  }} Stunden {{ result.name }}</li>
       {% endfor %}
 
     </td>
@@ -223,12 +221,10 @@ rdf_prefix_path: _data/prefixes.pref
     <td>
       
 
-      <ul>
         {% assign resultset = page.rdf | rdf_property: 'schema:interactivityType' %}
         {% for result in resultset %}
           <li>{{ result  }}</li>
         {% endfor %}
-      </ul>
 
 
     </td>
@@ -237,11 +233,16 @@ rdf_prefix_path: _data/prefixes.pref
   <tr>
     <th>Literatur:</th>
     <td>
-      
-      {% assign query = 'SELECT DISTINCT ?citation WHERE { ?resourceUri schema:citation ?citation } ORDER BY ?elem' %}
+
+
+      {% assign query = 'SELECT DISTINCT ?citation (group_concat(?authorName;separator=", ") as ?authors) WHERE { ?resourceUri schema:citation ?citation . ?citation <https://bmake.th-brandenburg.de/module/Author> ?author . ?author rdfs:label ?authorName } GROUP BY ?citation ORDER BY ?elem ' %}
       {% assign resultset = page.rdf | sparql_query: query %}
         {% for result in resultset %}
-        <li>{{ result.citation | rdf_property: 'rdfs:label' }} - {{ result.citation | rdf_property: 'schema:headline' }}</li>
+         <li>
+
+         {{ result.authors }} {{ result.citation | rdf_property: 'schema:headline' }} {{ result.citation | rdf_property: 'schema:bookEdition' }}, {{ result.citation | rdf_property: 'schema:datePublished' }}.
+
+       </li>
       {% endfor %}
 
 
